@@ -53,10 +53,13 @@ git clone https://github.com/Parham-sagharchi/rabbitmqCeleryDocker.git && cd rab
 ***Management UI:***
 
    - Manage UI is accssible using `localhost:15672` or `http://:15672` i.e in my case it is `http://192.168.100.126:15672`. You can find docker ip using docker network inspect network_name.
-        
+   
         ```sh
            docker inspect --format='{{.Name}} {{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -q)
         ```
+     
+   - Hint 1: Go to `http://127.0.0.1:15672` with USERNAME & PASSWORD `PARHAM`.
+   - Hint 2: you can change username, password and local ip in `.env`.
      
 ***Caution:***
 
