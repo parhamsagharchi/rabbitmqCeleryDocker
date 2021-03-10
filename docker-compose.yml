@@ -1,0 +1,23 @@
+version: '3.9'
+services:
+  worker:
+    build:
+      context: .
+      dockerfile: dockerfile
+    volumes:
+      - type: bind
+        source: .
+        target: /app
+    links:
+      - rabbit
+    depends_on:
+      - rabbit
+  rabbit:
+    hostname: rabbit
+    image: rabbitmq:management
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_DEFAULT_USER}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_DEFAULT_PASS}
+    ports:
+      - "5672:5672"
+      - "15672:15672"
